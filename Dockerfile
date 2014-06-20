@@ -2,6 +2,9 @@ FROM debian:jessie
 MAINTAINER needo <needo@superhero.org>
 ENV DEBIAN_FRONTEND noninteractive
 
+# Fix timezone
+RUN ln -sf /usr/share/zoneinfo/CST6CDT /etc/localtime
+
 RUN apt-get update -q
 
 # Install plexWatch Dependencies
