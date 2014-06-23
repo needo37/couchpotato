@@ -2,9 +2,6 @@ FROM debian:jessie
 MAINTAINER needo <needo@superhero.org>
 ENV DEBIAN_FRONTEND noninteractive
 
-# Fix timezone
-RUN ln -sf /usr/share/zoneinfo/CST6CDT /etc/localtime
-
 # Fix a Debianism of the nobody's uid being 65534
 RUN usermod -u 99 nobody
 RUN usermod -g 100 nobody
