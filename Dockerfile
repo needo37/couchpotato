@@ -8,7 +8,7 @@ RUN usermod -g 100 nobody
 
 RUN apt-get update -q
 
-# Install plexWatch Dependencies
+# Install Dependencies
 RUN apt-get install -qy python wget
 
 # Install CouchPotato v2.4.0
