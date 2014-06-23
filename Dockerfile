@@ -9,11 +9,13 @@ RUN usermod -g 100 nobody
 RUN apt-get update -q
 
 # Install plexWatch Dependencies
-RUN apt-get install -qy git python
+RUN apt-get install -qy python wget
 
-# Checkout CouchPotato from github
-RUN git clone https://github.com/RuudBurger/CouchPotatoServer.git /opt/couchpotato
-RUN chown -R nobody:users /opt/couchpotato
+# Install CouchPotato v2.4.0
+RUN mkdir /opt/couchpotato
+RUN wget -P /tmp/ https://github.com/RuudBurger/CouchPotatoServer/archive/build/2.4.0.tar.gz
+RUN tar -C /opt/couchpotato -xvf /tmp/2.4.0.tar.gz --strip-components 1
+RUN chown nobody:users /opt/couchpotato
 
 EXPOSE 5050
 
