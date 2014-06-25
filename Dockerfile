@@ -1,6 +1,12 @@
-FROM debian:jessie
+FROM phusion/baseimage:0.9.11
 MAINTAINER needo <needo@superhero.org>
 ENV DEBIAN_FRONTEND noninteractive
+
+# Set correct environment variables
+ENV HOME /root
+
+# Use baseimage-docker's init system
+CMD ["/sbin/my_init"]
 
 # Fix a Debianism of the nobody's uid being 65534
 RUN usermod -u 99 nobody
@@ -28,7 +34,12 @@ VOLUME /downloads
 # Movies directory
 VOLUME /movies
 
-# Because running things as root is wrong
-USER nobody
-ENTRYPOINT ["python", "/opt/couchpotato/CouchPotato.py"]
-CMD ["--config_file=/config/config.ini", "--data_dir=/config/data"]
+# Add edge.sh to execute during container startup
+RUN mkdir -p /etc/my_init.d
+ADD edge.sh /etc/my_init.d/edge.sh
+RUN chmod +x /etc/my_init.d/edge.sh
+
+# Add CouchPotato to runit
+RUN mkdir /etc/service/couchpotato
+ADD couchpotato.sh /etc/service/couchpotato/run
+RUN chmod +x /etc/service/couchpotato/run
