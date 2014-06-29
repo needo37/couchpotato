@@ -12,10 +12,12 @@ CMD ["/sbin/my_init"]
 RUN usermod -u 99 nobody
 RUN usermod -g 100 nobody
 
+RUN add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe multiverse"
+RUN add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse"
 RUN apt-get update -q
 
 # Install Dependencies
-RUN apt-get install -qy python wget
+RUN apt-get install -qy python wget unrar
 
 # Install CouchPotato v2.4.0
 RUN mkdir /opt/couchpotato
