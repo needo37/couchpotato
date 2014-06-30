@@ -19,10 +19,10 @@ RUN apt-get update -q
 # Install Dependencies
 RUN apt-get install -qy python wget unrar
 
-# Install CouchPotato v2.4.0
+# Install CouchPotato v2.5.1
 RUN mkdir /opt/couchpotato
-RUN wget -P /tmp/ https://github.com/RuudBurger/CouchPotatoServer/archive/build/2.4.0.tar.gz
-RUN tar -C /opt/couchpotato -xvf /tmp/2.4.0.tar.gz --strip-components 1
+RUN wget -P /tmp/ https://github.com/RuudBurger/CouchPotatoServer/archive/build/2.5.1.tar.gz
+RUN tar -C /opt/couchpotato -xvf /tmp/2.5.1.tar.gz --strip-components 1
 RUN chown nobody:users /opt/couchpotato
 
 EXPOSE 5050
