@@ -13,3 +13,12 @@ If you would like to run the latest updates from the master branch as well as en
 ```
 docker run -d --net="host" --name="couchpotato" -v /path/to/couchpotato/data:/config -v /path/to/downloads:/downloads -v /path/to/movies:/movies -v /etc/localtime:/etc/localtime:ro -e EDGE=1 -p 5050:5050 needo/couchpotato
 ```
+
+Docker compose
+--------------
+
+To run plex with [docker-compose](https://docs.docker.com/compose/) clone the repository and run:
+
+```
+docker-compose up -d
+```
