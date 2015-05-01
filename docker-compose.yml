@@ -1,0 +1,10 @@
+couchpotato:
+  build: .
+  net: host
+  environment:
+  - EDGE=1
+  volumes:
+  - /etc/localtime:/etc/localtime:ro
+  - config:/config
+  - downloads:/downloads
+  - movies:/movies
