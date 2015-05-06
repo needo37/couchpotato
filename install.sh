@@ -23,7 +23,7 @@ add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates univ
 
 # Install Dependencies
 apt-get update -qq
-apt-get install -qy python wget unrar git
+apt-get install -qy python wget unrar git python-lxml
 
 #########################################
 ##             INSTALLATION            ##
